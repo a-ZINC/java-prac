@@ -2,6 +2,7 @@ package com.application.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -38,6 +39,14 @@ public class NewAppServlet extends HttpServlet {
     @Override
     protected void doGet(final HttpServletRequest req, final HttpServletResponse resp) throws ServletException, IOException {
        final PrintWriter out = resp.getWriter();
+
+
+       Connection connection = (Connection) 
+            servletContext.getAttribute("conn");
+        
+        out.println("<html><body>");
+        out.println("<h1>Employee DB Object obtained from Context</h1>");
+        out.println("<p>Connection: " + connection + "</p>");
 
         out.print("<h1> HELLO </h1>" );
         out.print("<h4> Servlet Params </h4>");

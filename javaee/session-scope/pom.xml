@@ -1,7 +1,7 @@
 <project>
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.application</groupId>
-    <artifactId>application</artifactId>
+    <groupId>com.</groupId>
+    <artifactId>sessionscope</artifactId>
     <version>1.0.0</version>
     <packaging>war</packaging>
 
@@ -25,16 +25,9 @@
             <version>3.1.1</version>
             <scope>provided</scope>
         </dependency>
-
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>42.7.7</version>
-            <scope>compile</scope>
-        </dependency>
     </dependencies>
 
     <build>
-        <finalName>application</finalName>
+        <finalName>sessionscope</finalName>
     </build>
 </project>

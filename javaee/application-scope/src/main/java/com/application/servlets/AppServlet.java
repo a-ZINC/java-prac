@@ -2,6 +2,8 @@ package com.application.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -27,6 +29,23 @@ public class AppServlet extends HttpServlet {
     @Override
     protected void doGet(final HttpServletRequest req, final HttpServletResponse resp) throws ServletException, IOException {
        final PrintWriter out = resp.getWriter();
+
+       try {
+        Class.forName("org.postgresql.Driver");
+        Connection conn = DriverManager.getConnection(
+            "jdbc:postgresql://localhost:5432/demo",
+            "user",
+            "password"
+        );
+        out.println("<h2>Employee DB Connection Object</h2>");
+        out.println("<p>" + conn + "</p>");
+
+        servletContext.setAttribute("conn", conn);
+       } catch (Exception e) {
+            out.println("<h2>Exception in opening Connection</h2>");
+            out.println("<p>" + e.getMessage() + "</p>");
+            e.printStackTrace();
+       }
 
         out.print("<h1> HELLO </h1>" );
         out.print("<h4> Servlet Params </h4>");
